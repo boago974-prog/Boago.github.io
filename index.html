@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Alex Morgan | Creative Portfolio</title>
+    <title>Alex Morgan | Floating Skills Portfolio</title>
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -14,12 +14,90 @@
             box-sizing: border-box;
         }
 
+        /* ===== CSS VARIABLES FOR AUTO THEME (System preference) ===== */
+        /* Light theme (default) */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --bg-hero-visual: linear-gradient(145deg, #ffffff, #f1f5f9);
+            --bg-tools: #ffffff;
+            --bg-featured: linear-gradient(120deg, #0f172a, #1e293b);
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --border-light: #e2e8f0;
+            --border-card: #eef2ff;
+            --border-card-hover: #3b82f6;
+            --badge-bg: #e0f2fe;
+            --badge-text: #0284c7;
+            --skill-icon-bg: #eef2ff;
+            --skill-icon-color: #2563eb;
+            --tag-bg: #f1f5f9;
+            --tag-text: #1e293b;
+            --btn-primary-bg: #0f172a;
+            --btn-primary-text: white;
+            --btn-primary-hover: #1e293b;
+            --btn-outline-border: #cbd5e1;
+            --btn-outline-text: #1e293b;
+            --btn-outline-hover-border: #3b82f6;
+            --btn-outline-hover-text: #3b82f6;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 20px 30px -12px rgba(0,0,0,0.12);
+            --shadow-float: 0 25px 35px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(59,130,246,0.1);
+            --gradient-logo: linear-gradient(135deg, #1e293b, #3b82f6);
+            --gradient-hero: linear-gradient(to right, #0f172a, #2563eb);
+            --code-icon: #3b82f6;
+            --footer-icon: #ef4444;
+        }
+
+        /* Dark theme (automatically applied when system prefers dark) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #0a0c10;
+                --bg-surface: #14181f;
+                --bg-card: #1a1f2a;
+                --bg-hero-visual: linear-gradient(145deg, #1a1f2a, #11161c);
+                --bg-tools: #14181f;
+                --bg-featured: linear-gradient(120deg, #020617, #0f172a);
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-muted: #94a3b8;
+                --text-light: #64748b;
+                --border-light: #1e293b;
+                --border-card: #2d3748;
+                --border-card-hover: #60a5fa;
+                --badge-bg: #1e293b;
+                --badge-text: #7ab7ef;
+                --skill-icon-bg: #2d3748;
+                --skill-icon-color: #60a5fa;
+                --tag-bg: #1e293b;
+                --tag-text: #cbd5e1;
+                --btn-primary-bg: #3b82f6;
+                --btn-primary-text: #ffffff;
+                --btn-primary-hover: #2563eb;
+                --btn-outline-border: #334155;
+                --btn-outline-text: #cbd5e1;
+                --btn-outline-hover-border: #60a5fa;
+                --btn-outline-hover-text: #60a5fa;
+                --shadow-sm: 0 8px 20px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.4);
+                --shadow-md: 0 20px 30px -12px rgba(0,0,0,0.5);
+                --shadow-float: 0 30px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(96,165,250,0.2);
+                --gradient-logo: linear-gradient(135deg, #94a3b8, #60a5fa);
+                --gradient-hero: linear-gradient(to right, #e2e8f0, #60a5fa);
+                --code-icon: #60a5fa;
+                --footer-icon: #f87171;
+            }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
+            background: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.5;
             scroll-behavior: smooth;
+            transition: background-color 0.25s ease, color 0.2s ease;
         }
 
         /* custom scroll */
@@ -27,10 +105,10 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #e2e8f0;
+            background: var(--border-light);
         }
         ::-webkit-scrollbar-thumb {
-            background: #3b82f6;
+            background: var(--skill-icon-color);
             border-radius: 20px;
         }
 
@@ -48,13 +126,13 @@
             align-items: center;
             flex-wrap: wrap;
             padding: 1.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-light);
             margin-bottom: 2rem;
         }
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #1e293b, #3b82f6);
+            background: var(--gradient-logo);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -68,11 +146,11 @@
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            color: #334155;
+            color: var(--text-secondary);
             transition: color 0.2s ease;
         }
         .nav-links a:hover {
-            color: #3b82f6;
+            color: var(--skill-icon-color);
         }
 
         /* hero section */
@@ -89,8 +167,8 @@
             min-width: 260px;
         }
         .hero-badge {
-            background: #e0f2fe;
-            color: #0284c7;
+            background: var(--badge-bg);
+            color: var(--badge-text);
             padding: 0.3rem 1rem;
             border-radius: 40px;
             font-size: 0.85rem;
@@ -103,14 +181,14 @@
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #0f172a, #2563eb);
+            background: var(--gradient-hero);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
         .hero-content p {
             font-size: 1.2rem;
-            color: #475569;
+            color: var(--text-muted);
             max-width: 550px;
             margin-bottom: 2rem;
         }
@@ -120,8 +198,8 @@
             flex-wrap: wrap;
         }
         .btn-primary {
-            background: #0f172a;
-            color: white;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
             padding: 0.8rem 1.8rem;
             border-radius: 40px;
             text-decoration: none;
@@ -134,40 +212,41 @@
             gap: 8px;
         }
         .btn-primary:hover {
-            background: #1e293b;
+            background: var(--btn-primary-hover);
             transform: translateY(-3px);
-            box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 20px -12px rgba(0,0,0,0.3);
         }
         .btn-outline {
             background: transparent;
-            border: 1.5px solid #cbd5e1;
+            border: 1.5px solid var(--btn-outline-border);
             padding: 0.8rem 1.8rem;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            color: #1e293b;
+            color: var(--btn-outline-text);
             transition: all 0.25s;
         }
         .btn-outline:hover {
-            border-color: #3b82f6;
-            color: #3b82f6;
+            border-color: var(--btn-outline-hover-border);
+            color: var(--btn-outline-hover-text);
             transform: translateY(-2px);
         }
         .hero-visual {
             flex: 0.8;
             min-width: 240px;
-            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            background: var(--bg-hero-visual);
             border-radius: 2rem;
             padding: 1.2rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-sm);
             text-align: center;
+            transition: background 0.2s;
         }
         .code-icon {
             font-size: 5rem;
-            color: #3b82f6;
+            color: var(--code-icon);
         }
 
-        /* skills grid — main section */
+        /* skills grid - FLOATING CARDS ON HOVER */
         .skills-section {
             margin: 4rem 0 5rem;
         }
@@ -177,6 +256,7 @@
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
+            color: var(--text-primary);
         }
         .section-title:after {
             content: '';
@@ -185,7 +265,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: #3b82f6;
+            background: var(--skill-icon-color);
             border-radius: 4px;
         }
         .skills-grid {
@@ -195,57 +275,73 @@
             margin-top: 2.5rem;
         }
         .skill-card {
-            background: white;
+            background: var(--bg-card);
             border-radius: 1.5rem;
             padding: 1.8rem 1.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #eef2ff;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid var(--border-card);
             backdrop-filter: blur(2px);
+            cursor: default;
+            will-change: transform;
         }
+        /* FLOATING EFFECT ON HOVER */
         .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
-            border-color: #cbdffc;
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-float);
+            border-color: var(--border-card-hover);
+        }
+        /* Optional: subtle inner glow for extra float sensation */
+        .skill-card:hover .skill-icon {
+            transform: scale(1.05);
+            transition: transform 0.25s ease;
         }
         .skill-icon {
             font-size: 2.4rem;
             margin-bottom: 1rem;
             display: inline-block;
-            background: #eef2ff;
+            background: var(--skill-icon-bg);
             padding: 0.7rem;
             border-radius: 18px;
-            color: #2563eb;
+            color: var(--skill-icon-color);
+            transition: transform 0.2s ease;
         }
         .skill-card h3 {
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
         .skill-card p {
-            color: #475569;
+            color: var(--text-muted);
             font-weight: 400;
             margin-top: 0.5rem;
             font-size: 0.95rem;
         }
         .skill-tag {
             display: inline-block;
-            background: #f1f5f9;
+            background: var(--tag-bg);
             padding: 0.2rem 0.7rem;
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 600;
-            color: #1e293b;
+            color: var(--tag-text);
             margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        .skill-card:hover .skill-tag {
+            background: var(--skill-icon-color);
+            color: white;
         }
 
-        /* tools / extra row with additional style */
+        /* tools highlight */
         .tools-highlight {
             margin: 2rem 0 3rem;
-            background: white;
+            background: var(--bg-tools);
             border-radius: 2rem;
             padding: 2rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s;
         }
         .tools-flex {
             display: flex;
@@ -258,23 +354,65 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            background: #f8fafc;
+            background: var(--bg-card);
             padding: 0.6rem 1.2rem;
             border-radius: 60px;
             font-weight: 500;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+        .tools-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
         }
         .tools-item i {
             font-size: 1.3rem;
-            color: #3b82f6;
+            color: var(--skill-icon-color);
+        }
+
+        /* featured project */
+        .featured-card {
+            background: var(--bg-featured);
+            border-radius: 1.8rem;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+        .featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .featured-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        .featured-card p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            color: #e2e8f0;
+        }
+        .tech-badge {
+            background: var(--skill-icon-color);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            display: inline-block;
         }
 
         /* footer */
         .footer {
             margin-top: 5rem;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-light);
             padding: 2rem 0;
             text-align: center;
-            color: #64748b;
+            color: var(--text-light);
             font-size: 0.85rem;
         }
 
@@ -321,6 +459,10 @@
             .tools-flex {
                 justify-content: center;
             }
+            /* adjust floating for mobile: reduce lift to avoid overlap */
+            .skill-card:hover {
+                transform: translateY(-8px) scale(1.01);
+            }
         }
 
         @media (max-width: 480px) {
@@ -332,7 +474,7 @@
             }
         }
 
-        /* animation for card entrance (simple) */
+        /* animations for initial load */
         .skill-card {
             opacity: 0;
             animation: fadeUp 0.5s ease forwards;
@@ -354,13 +496,11 @@
         .skill-card:nth-child(5) { animation-delay: 0.25s; }
         .skill-card:nth-child(6) { animation-delay: 0.3s; }
         .skill-card:nth-child(7) { animation-delay: 0.35s; }
-        .skill-card:nth-child(8) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- header with nav -->
     <nav class="navbar">
         <div class="logo">
             <i class="fas fa-cube"></i> Alex.creative
@@ -373,12 +513,11 @@
         </ul>
     </nav>
 
-    <!-- hero introduction -->
     <div class="hero">
         <div class="hero-content">
-            <span class="hero-badge"><i class="fas fa-bolt"></i> digital craftsperson</span>
+            <span class="hero-badge"><i class="fas fa-moon-stars"></i> <i class="fas fa-sun"></i> auto theme · floating cards</span>
             <h1>Design, Code & <br>Motion Ecosystem</h1>
-            <p>Bringing ideas to life through frontend development, illustration, animation, and 3D design. Based on open-source tools & creative pipelines.</p>
+            <p>Bringing ideas to life through frontend development, illustration, animation, and 3D design. Based on open-source tools & creative pipelines. <strong>Hover over skills → they float!</strong></p>
             <div class="btn-group">
                 <a href="#" class="btn-primary"><i class="fab fa-github"></i> GitHub Portfolio</a>
                 <a href="#" class="btn-outline"><i class="fas fa-scroll"></i> Resume</a>
@@ -387,58 +526,57 @@
         <div class="hero-visual">
             <i class="fas fa-laptop-code code-icon"></i>
             <p style="margin-top: 0.8rem; font-weight: 500;">Full-stack creative</p>
-            <div style="font-size: 0.8rem; color:#3b82f6;">HTML/CSS/JS · Git · Ubuntu</div>
+            <div style="font-size: 0.8rem; color: var(--skill-icon-color);">✨ hover cards · float effect ✨</div>
         </div>
     </div>
 
-    <!-- main skills section: exact items as required: 
-         HTML, CSS, JavaScript | Responsive Web Design | Git & GitHub | Illustrasion, Adobe | 2d Animation | 3D Design | Kali / Ubuntu basics -->
+    <!-- core competencies: exact skills list with FLOATING hover -->
     <div class="skills-section">
         <h2 class="section-title">core competencies</h2>
         <div class="skills-grid">
-            <!-- 1. HTML, CSS, JavaScript -->
+            <!-- HTML, CSS, JavaScript -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i> <i class="fab fa-js"></i></div>
                 <h3>HTML, CSS, JavaScript</h3>
                 <p>Semantic markup, modern flex/grid layouts, ES6+ interactivity, DOM manipulation, and responsive behavior.</p>
                 <span class="skill-tag">core web tech</span>
             </div>
-            <!-- 2. Responsive Web Design -->
+            <!-- Responsive Web Design -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-mobile-alt"></i> <i class="fas fa-tablet-alt"></i></div>
                 <h3>Responsive Web Design</h3>
                 <p>Fluid grids, media queries, mobile-first approach, and adaptive components ensuring perfect experience on any device.</p>
                 <span class="skill-tag">mobile-first · cross-browser</span>
             </div>
-            <!-- 3. Git & GitHub -->
+            <!-- Git & GitHub -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fab fa-git-alt"></i> <i class="fab fa-github"></i></div>
                 <h3>Git & GitHub</h3>
                 <p>Version control workflows, branching, pull requests, collaboration, and CI/CD basics with GitHub Pages.</p>
                 <span class="skill-tag">repos · commits · actions</span>
             </div>
-            <!-- 4. Illustrasion, Adobe (Illustration & Adobe Suite) -->
+            <!-- Illustrasion, Adobe -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-pen-fancy"></i> <i class="fas fa-palette"></i></div>
                 <h3>Illustrasion, Adobe</h3>
                 <p>Digital illustration, vector art, Adobe Illustrator & Photoshop — concept design, branding, and visual storytelling.</p>
                 <span class="skill-tag">Adobe Creative Cloud</span>
             </div>
-            <!-- 5. 2D Animation -->
+            <!-- 2D Animation -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-film"></i> <i class="fas fa-draw-polygon"></i></div>
                 <h3>2D Animation</h3>
                 <p>Frame-by-frame, motion graphics, CSS keyframe animations, Lottie, and traditional animation principles.</p>
                 <span class="skill-tag">After Effects · Synfig</span>
             </div>
-            <!-- 6. 3D Design -->
+            <!-- 3D Design -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-cube"></i> <i class="fas fa-shapes"></i></div>
                 <h3>3D Design</h3>
                 <p>Modeling, texturing, lighting, and rendering using Blender, basic 3D assets for web (Three.js).</p>
                 <span class="skill-tag">Blender · 3D concepts</span>
             </div>
-            <!-- 7. Kali / Ubuntu basics -->
+            <!-- Kali / Ubuntu basics -->
             <div class="skill-card">
                 <div class="skill-icon"><i class="fab fa-ubuntu"></i> <i class="fas fa-terminal"></i></div>
                 <h3>Kali / Ubuntu basics</h3>
@@ -448,12 +586,12 @@
         </div>
     </div>
 
-    <!-- additional mini tools / second representation to reflect all skills again subtly but consistent -->
+    <!-- tools highlight row with all skills visual -->
     <div class="tools-highlight">
         <div class="tools-flex">
             <div class="tools-item"><i class="fab fa-html5"></i> HTML5</div>
             <div class="tools-item"><i class="fab fa-css3-alt"></i> CSS3</div>
-            <div class="tools-item"><i class="fab fa-js"></i> JavaScript ES6</div>
+            <div class="tools-item"><i class="fab fa-js"></i> JavaScript</div>
             <div class="tools-item"><i class="fas fa-mobile"></i> RWD</div>
             <div class="tools-item"><i class="fab fa-github"></i> Git/GitHub</div>
             <div class="tools-item"><i class="fas fa-drafting-compass"></i> Adobe</div>
@@ -461,81 +599,58 @@
             <div class="tools-item"><i class="fas fa-cube"></i> 3D Design</div>
             <div class="tools-item"><i class="fab fa-ubuntu"></i> Kali/Ubuntu</div>
         </div>
-        <p style="text-align: center; margin-top: 1.6rem; font-size: 0.85rem; color: #334155;"><i class="fas fa-check-circle" style="color:#10b981;"></i> All core skills integrated — from frontend to creative & system tools</p>
+        <p style="text-align: center; margin-top: 1.6rem; font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-arrow-up" style="color: var(--skill-icon-color);"></i> Hover any skill card → it floats upward with a smooth 3D effect! <i class="fas fa-arrow-up" style="color: var(--skill-icon-color);"></i></p>
     </div>
 
-    <!-- optional project highlight to show integration -->
-    <div style="margin: 2rem 0 0.5rem;">
-        <div style="background: linear-gradient(120deg, #0f172a, #1e293b); border-radius: 1.8rem; padding: 2rem; color: white; text-align: center;">
-            <i class="fas fa-rocket" style="font-size: 2rem; margin-bottom: 1rem; display: inline-block;"></i>
-            <h3 style="font-size: 1.7rem; margin-bottom: 0.5rem;">Featured project: Creative Fusion</h3>
-            <p style="max-width: 600px; margin: 0 auto; opacity: 0.9;">Interactive portfolio merging 2D animations, 3D assets, responsive layouts, and version-controlled with GitHub. Built with HTML/CSS/JS.</p>
-            <div style="margin-top: 1.4rem;">
-                <span style="background: #3b82f6; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.75rem; font-weight: 600;">#responsive</span>
-                <span style="background: #3b82f6; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem;">#animation</span>
-                <span style="background: #3b82f6; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem;">#3d-ready</span>
-            </div>
+    <!-- featured project -->
+    <div class="featured-card">
+        <i class="fas fa-rocket" style="font-size: 2rem; margin-bottom: 1rem; display: inline-block;"></i>
+        <h3>Featured project: Creative Fusion</h3>
+        <p>Interactive portfolio merging 2D animations, 3D assets, responsive layouts, and version-controlled with GitHub. Built with HTML/CSS/JS.</p>
+        <div style="margin-top: 1.4rem;">
+            <span class="tech-badge">#responsive</span>
+            <span class="tech-badge" style="margin-left: 0.5rem;">#animation</span>
+            <span class="tech-badge" style="margin-left: 0.5rem;">#3d-ready</span>
         </div>
     </div>
 
     <footer class="footer">
-        <p>© 2025 Alex Morgan — Creative Technologist. Built with <i class="fas fa-heart" style="color:#ef4444;"></i> using HTML, CSS, JavaScript. Fully responsive & version controlled.</p>
+        <p>© 2025 Alex Morgan — Creative Technologist. Built with <i class="fas fa-heart" style="color: var(--footer-icon);"></i> using HTML, CSS, JavaScript. Fully responsive, auto dark/light & <strong>floating skill cards</strong>.</p>
         <div style="margin-top: 0.7rem;">
             <i class="fab fa-github"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-behance"></i> <i class="fab fa-dribbble"></i>
         </div>
     </footer>
 </div>
 
-<!-- small interactive javascript: dynamic greeting and console info matching portfolio style, plus minor animation on card tooltip (just to add dynamic behavior) -->
 <script>
     (function() {
-        // additional interactive details: console greeting & simple clock or hover effect (plus dynamic year)
-        console.log("🚀 Portfolio loaded — Skills: HTML/CSS/JS, RWD, Git, Adobe, 2D/3D, Kali/Ubuntu basics.");
+        // Console greeting
+        console.log("🚀 FLOATING SKILL CARDS ACTIVATED — Hover to see smooth lift effect! Theme auto black/white.");
         
-        // dynamic year update for footer (optional)
-        const footer = document.querySelector('.footer p');
-        if (footer) {
+        // dynamic year update for footer
+        const footerPara = document.querySelector('.footer p');
+        if (footerPara) {
             const currentYear = new Date().getFullYear();
-            footer.innerHTML = footer.innerHTML.replace('2025', currentYear);
+            footerPara.innerHTML = footerPara.innerHTML.replace('2025', currentYear);
         }
         
-        // add a small "active" tooltip on skill cards showing technology stack description
-        const cards = document.querySelectorAll('.skill-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', (e) => {
-                // just a micro-interaction: adds slight border highlight
-                card.style.transition = "all 0.2s";
-                card.style.borderColor = "#93c5fd";
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.borderColor = "#eef2ff";
-            });
-        });
-        
-        // create a 'view skills' interactive popup on hero button? just for fun: alert message if someone clicks on "GitHub Portfolio"
+        // interactive alerts for buttons
         const gitBtn = document.querySelector('.btn-primary');
         if (gitBtn) {
             gitBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert("✨ Explore all my projects on GitHub — where responsive design meets creative code! (HTML/CSS/JS, 2D/3D & Linux tools)");
+                alert("✨ Explore my GitHub — hover the skill cards and see them float! Full-stack + creative.");
             });
         }
         const outlineBtn = document.querySelector('.btn-outline');
         if (outlineBtn) {
             outlineBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert("📄 Full resume includes expertise in Illustration, Adobe Suite, Animation, 3D Design, Kali/Ubuntu fundamentals.");
+                alert("📄 Resume: Illustration, Adobe, 2D/3D Animation, Kali/Ubuntu basics. PS: Cards float on hover!");
             });
         }
-
-        // small additional interactive text: show device detection message for responsive test
-        const heroP = document.querySelector('.hero-content p');
-        if (heroP && window.innerWidth < 768) {
-            // Not necessary to modify content, but playful
-            console.log("📱 Mobile view active — fully responsive design verified.");
-        }
         
-        // adds an easter egg: double click on logo shows skill summary
+        // double click logo to list skills with floating reminder
         const logo = document.querySelector('.logo');
         if(logo) {
             logo.addEventListener('dblclick', () => {
@@ -548,20 +663,28 @@
                     "3D Design", 
                     "Kali / Ubuntu basics"
                 ];
-                alert("🎨 Core skillset:\n• " + skillsList.join("\n• "));
+                alert("🎯 Core skillset:\n• " + skillsList.join("\n• ") + "\n\n✨ Hover any card — they float with smooth motion!");
             });
         }
         
-        // tiny scroll reveal to make cards pop (already have fadeup, but re-trigger for consistency)
-        // just for safe measure, we ensure no missing styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .skill-card {
-                opacity: 0;
-                animation: fadeUp 0.6s ease forwards;
-            }
-        `;
-        document.head.appendChild(style);
+        // detect system theme and log
+        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        console.log(`🌓 Theme: ${isDarkMode ? 'dark' : 'light'} mode — floating cards active.`);
+        
+        // live listener for theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            const newTheme = e.matches ? 'dark' : 'light';
+            console.log(`🔄 Theme changed to ${newTheme} mode — floating effect remains butter smooth.`);
+        });
+        
+        // additional: add a tiny ripple to cards on click? optional but fun
+        const cards = document.querySelectorAll('.skill-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Just a subtle haptic feedback for fun
+                console.log("✨ Floating card clicked — smooth hover effect active.");
+            });
+        });
     })();
 </script>
 
