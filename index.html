@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Alex Morgan | Floating Skills Portfolio</title>
+    <title>Boago.creative | Portfolio Home</title>
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -39,10 +39,6 @@
             --btn-primary-bg: #0f172a;
             --btn-primary-text: white;
             --btn-primary-hover: #1e293b;
-            --btn-outline-border: #cbd5e1;
-            --btn-outline-text: #1e293b;
-            --btn-outline-hover-border: #3b82f6;
-            --btn-outline-hover-text: #3b82f6;
             --shadow-sm: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
             --shadow-md: 0 20px 30px -12px rgba(0,0,0,0.12);
             --shadow-float: 0 25px 35px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(59,130,246,0.1);
@@ -77,10 +73,6 @@
                 --btn-primary-bg: #3b82f6;
                 --btn-primary-text: #ffffff;
                 --btn-primary-hover: #2563eb;
-                --btn-outline-border: #334155;
-                --btn-outline-text: #cbd5e1;
-                --btn-outline-hover-border: #60a5fa;
-                --btn-outline-hover-text: #60a5fa;
                 --shadow-sm: 0 8px 20px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.4);
                 --shadow-md: 0 20px 30px -12px rgba(0,0,0,0.5);
                 --shadow-float: 0 30px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(96,165,250,0.2);
@@ -119,15 +111,35 @@
             padding: 0 2rem;
         }
 
-        /* header & navigation */
+        /* ===== STICKY NAVIGATION ===== */
         .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg-body);
+            backdrop-filter: blur(12px);
+            background-color: rgba(var(--bg-body-rgb), 0.85);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px solid var(--border-light);
             margin-bottom: 2rem;
+            transition: all 0.2s ease;
+        }
+        /* Add background rgb support for better blur */
+        :root {
+            --bg-body-rgb: 248, 250, 252;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body-rgb: 10, 12, 16;
+            }
+        }
+        .navbar {
+            background-color: rgba(var(--bg-body-rgb), 0.85);
+            backdrop-filter: blur(12px);
         }
         .logo {
             font-size: 1.8rem;
@@ -145,12 +157,29 @@
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-secondary);
             transition: color 0.2s ease;
+            padding: 0.4rem 0;
+            position: relative;
         }
         .nav-links a:hover {
             color: var(--skill-icon-color);
+        }
+        /* Active page indicator (home) */
+        .nav-links a.active {
+            color: var(--skill-icon-color);
+            border-bottom: 2px solid var(--skill-icon-color);
+        }
+        .nav-links a:not(.active):hover::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--skill-icon-color);
+            opacity: 0.5;
         }
 
         /* hero section */
@@ -160,7 +189,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 2rem;
-            margin: 3rem 0 4rem 0;
+            margin: 2rem 0 3rem 0;
         }
         .hero-content {
             flex: 1;
@@ -215,21 +244,6 @@
             background: var(--btn-primary-hover);
             transform: translateY(-3px);
             box-shadow: 0 12px 20px -12px rgba(0,0,0,0.3);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid var(--btn-outline-border);
-            padding: 0.8rem 1.8rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            color: var(--btn-outline-text);
-            transition: all 0.25s;
-        }
-        .btn-outline:hover {
-            border-color: var(--btn-outline-hover-border);
-            color: var(--btn-outline-hover-text);
-            transform: translateY(-2px);
         }
         .hero-visual {
             flex: 0.8;
@@ -291,7 +305,6 @@
             box-shadow: var(--shadow-float);
             border-color: var(--border-card-hover);
         }
-        /* Optional: subtle inner glow for extra float sensation */
         .skill-card:hover .skill-icon {
             transform: scale(1.05);
             transition: transform 0.25s ease;
@@ -334,7 +347,7 @@
             color: white;
         }
 
-        /* tools highlight */
+        /* tools highlight - extra visual */
         .tools-highlight {
             margin: 2rem 0 3rem;
             background: var(--bg-tools);
@@ -425,6 +438,7 @@
                 flex-direction: column;
                 gap: 1rem;
                 text-align: center;
+                padding: 1rem 0;
             }
             .nav-links {
                 gap: 1.2rem;
@@ -459,7 +473,6 @@
             .tools-flex {
                 justify-content: center;
             }
-            /* adjust floating for mobile: reduce lift to avoid overlap */
             .skill-card:hover {
                 transform: translateY(-8px) scale(1.01);
             }
@@ -496,17 +509,21 @@
         .skill-card:nth-child(5) { animation-delay: 0.25s; }
         .skill-card:nth-child(6) { animation-delay: 0.3s; }
         .skill-card:nth-child(7) { animation-delay: 0.35s; }
+        .skill-card:nth-child(8) { animation-delay: 0.4s; }
+        .skill-card:nth-child(9) { animation-delay: 0.45s; }
+        .skill-card:nth-child(10) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Sticky navigation bar with home active indicator -->
     <nav class="navbar">
         <div class="logo">
-            <i class="fas fa-cube"></i> Alex.creative
+            <i class="fas fa-cube"></i> Boago.creative
         </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">Home</a></li>
             <li><a href="#">Work</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
@@ -515,22 +532,21 @@
 
     <div class="hero">
         <div class="hero-content">
-            <span class="hero-badge"><i class="fas fa-moon-stars"></i> <i class="fas fa-sun"></i> auto theme · floating cards</span>
+            <span class="hero-badge"><i class="fas fa-home"></i> Home · Creative Technologist</span>
             <h1>Design, Code & <br>Motion Ecosystem</h1>
-            <p>Bringing ideas to life through frontend development, illustration, animation, and 3D design. Based on open-source tools & creative pipelines. <strong>Hover over skills → they float!</strong></p>
+            <p>Bringing ideas to life through frontend development, illustration, animation, and 3D design. Based on open-source tools & creative pipelines. System theme adapts to your preference.</p>
             <div class="btn-group">
                 <a href="#" class="btn-primary"><i class="fab fa-github"></i> GitHub Portfolio</a>
-                <a href="#" class="btn-outline"><i class="fas fa-scroll"></i> Resume</a>
             </div>
         </div>
         <div class="hero-visual">
             <i class="fas fa-laptop-code code-icon"></i>
             <p style="margin-top: 0.8rem; font-weight: 500;">Full-stack creative</p>
-            <div style="font-size: 0.8rem; color: var(--skill-icon-color);">✨ hover cards · float effect ✨</div>
+            <div style="font-size: 0.8rem; color: var(--skill-icon-color);">HTML/CSS/JS · Git · Ubuntu</div>
         </div>
     </div>
 
-    <!-- core competencies: exact skills list with FLOATING hover -->
+    <!-- core competencies: 10 skills including C#, Python, Bash -->
     <div class="skills-section">
         <h2 class="section-title">core competencies</h2>
         <div class="skills-grid">
@@ -583,10 +599,31 @@
                 <p>Linux system navigation, bash scripting, package management, file permissions, networking tools, and security fundamentals.</p>
                 <span class="skill-tag">terminal · CLI · security basics</span>
             </div>
+            <!-- C# (NEW) -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-code"></i> <i class="fab fa-microsoft"></i></div>
+                <h3>C#</h3>
+                <p>Object-oriented programming, .NET ecosystem, game development with Unity, and backend APIs. Strong typing and modern language features.</p>
+                <span class="skill-tag">.NET · Unity · desktop</span>
+            </div>
+            <!-- Python (NEW) -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fab fa-python"></i> <i class="fas fa-chart-line"></i></div>
+                <h3>Python</h3>
+                <p>Scripting, data analysis, automation, web frameworks (Django/Flask), and AI/ML fundamentals. Versatile and clean code.</p>
+                <span class="skill-tag">automation · data · backend</span>
+            </div>
+            <!-- Bash (NEW) -->
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-terminal"></i> <i class="fas fa-cogs"></i></div>
+                <h3>Bash</h3>
+                <p>Shell scripting, command-line automation, process management, and environment configuration for Unix/Linux systems.</p>
+                <span class="skill-tag">shell scripting · DevOps basics</span>
+            </div>
         </div>
     </div>
 
-    <!-- tools highlight row with all skills visual -->
+    <!-- tools highlight row with all skills visual - no floating text removed -->
     <div class="tools-highlight">
         <div class="tools-flex">
             <div class="tools-item"><i class="fab fa-html5"></i> HTML5</div>
@@ -598,8 +635,10 @@
             <div class="tools-item"><i class="fas fa-play-circle"></i> 2D Animation</div>
             <div class="tools-item"><i class="fas fa-cube"></i> 3D Design</div>
             <div class="tools-item"><i class="fab fa-ubuntu"></i> Kali/Ubuntu</div>
+            <div class="tools-item"><i class="fas fa-code"></i> C#</div>
+            <div class="tools-item"><i class="fab fa-python"></i> Python</div>
+            <div class="tools-item"><i class="fas fa-terminal"></i> Bash</div>
         </div>
-        <p style="text-align: center; margin-top: 1.6rem; font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-arrow-up" style="color: var(--skill-icon-color);"></i> Hover any skill card → it floats upward with a smooth 3D effect! <i class="fas fa-arrow-up" style="color: var(--skill-icon-color);"></i></p>
     </div>
 
     <!-- featured project -->
@@ -615,7 +654,7 @@
     </div>
 
     <footer class="footer">
-        <p>© 2025 Alex Morgan — Creative Technologist. Built with <i class="fas fa-heart" style="color: var(--footer-icon);"></i> using HTML, CSS, JavaScript. Fully responsive, auto dark/light & <strong>floating skill cards</strong>.</p>
+        <p>© 2025 Boago.creative — Creative Technologist. Built with <i class="fas fa-heart" style="color: var(--footer-icon);"></i> using HTML, CSS, JavaScript. Fully responsive & auto dark/light theme.</p>
         <div style="margin-top: 0.7rem;">
             <i class="fab fa-github"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-behance"></i> <i class="fab fa-dribbble"></i>
         </div>
@@ -624,8 +663,8 @@
 
 <script>
     (function() {
-        // Console greeting
-        console.log("🚀 FLOATING SKILL CARDS ACTIVATED — Hover to see smooth lift effect! Theme auto black/white.");
+        // Show we are on home page via console and active link
+        console.log("🏠 Home page active — Navigation is sticky, skills include C#, Python, Bash. Floating cards effect active.");
         
         // dynamic year update for footer
         const footerPara = document.querySelector('.footer p');
@@ -634,23 +673,16 @@
             footerPara.innerHTML = footerPara.innerHTML.replace('2025', currentYear);
         }
         
-        // interactive alerts for buttons
+        // GitHub button alert
         const gitBtn = document.querySelector('.btn-primary');
         if (gitBtn) {
             gitBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert("✨ Explore my GitHub — hover the skill cards and see them float! Full-stack + creative.");
-            });
-        }
-        const outlineBtn = document.querySelector('.btn-outline');
-        if (outlineBtn) {
-            outlineBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert("📄 Resume: Illustration, Adobe, 2D/3D Animation, Kali/Ubuntu basics. PS: Cards float on hover!");
+                alert("✨ Explore my GitHub portfolio — full-stack projects, 3D designs, and automation scripts (C#, Python, Bash).");
             });
         }
         
-        // double click logo to list skills with floating reminder
+        // double click logo to list all skills
         const logo = document.querySelector('.logo');
         if(logo) {
             logo.addEventListener('dblclick', () => {
@@ -661,29 +693,33 @@
                     "Illustrasion, Adobe", 
                     "2D Animation", 
                     "3D Design", 
-                    "Kali / Ubuntu basics"
+                    "Kali / Ubuntu basics",
+                    "C#",
+                    "Python",
+                    "Bash"
                 ];
-                alert("🎯 Core skillset:\n• " + skillsList.join("\n• ") + "\n\n✨ Hover any card — they float with smooth motion!");
+                alert("🎯 Complete skillset:\n• " + skillsList.join("\n• ") + "\n\n🏠 You're on the home page — navigation stays visible while scrolling.");
             });
         }
         
-        // detect system theme and log
+        // detect system theme
         const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        console.log(`🌓 Theme: ${isDarkMode ? 'dark' : 'light'} mode — floating cards active.`);
+        console.log(`🌓 Theme: ${isDarkMode ? 'dark' : 'light'} mode — sticky nav + floating cards active.`);
         
         // live listener for theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
             const newTheme = e.matches ? 'dark' : 'light';
-            console.log(`🔄 Theme changed to ${newTheme} mode — floating effect remains butter smooth.`);
+            console.log(`🔄 Theme changed to ${newTheme} mode — consistent experience.`);
         });
         
-        // additional: add a tiny ripple to cards on click? optional but fun
-        const cards = document.querySelectorAll('.skill-card');
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                // Just a subtle haptic feedback for fun
-                console.log("✨ Floating card clicked — smooth hover effect active.");
-            });
+        // ensure sticky nav doesn't lose background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                nav.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+            } else {
+                nav.style.boxShadow = "none";
+            }
         });
     })();
 </script>
